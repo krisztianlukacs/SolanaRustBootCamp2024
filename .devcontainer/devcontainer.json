@@ -6,6 +6,18 @@
 	"image": "mcr.microsoft.com/devcontainers/rust:1-1-bullseye",
 	"features": {
 		"ghcr.io/devcontainers/features/rust:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.copilot",
+				"ms-python.python",
+				"rust-lang.rust-analyzer",
+				"1YiB.rust-bundle",
+				"formulahendry.code-runner",
+				"dustypomerleau.rust-syntax"
+			]
+		}
 	}
 
 	// Use 'mounts' to make the cargo cache persistent in a Docker Volume.
