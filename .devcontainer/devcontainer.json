@@ -15,7 +15,8 @@
 				"rust-lang.rust-analyzer",
 				"1YiB.rust-bundle",
 				"formulahendry.code-runner",
-				"dustypomerleau.rust-syntax"
+				"dustypomerleau.rust-syntax",
+				"ms-python.debugpy"
 			]
 		}
 	}
