@@ -1,3 +1,6 @@
+// This is a Solna BootCamp Exam project. Krisztian Lukacs, Group 5
+// 2024.09.07
+
 fn main() {
     println!("Hello, World!");
 
