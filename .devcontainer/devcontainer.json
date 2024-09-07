@@ -16,7 +16,8 @@
 				"1YiB.rust-bundle",
 				"formulahendry.code-runner",
 				"dustypomerleau.rust-syntax",
-				"ms-python.debugpy"
+				"ms-python.debugpy",
+				"GitHub.copilot-chat"
 			]
 		}
 	}
