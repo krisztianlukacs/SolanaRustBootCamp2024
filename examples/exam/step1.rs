@@ -1,36 +1,21 @@
-extern crate solana_program;
+use solana_client::rpc_client::RpcClient;
+use solana_sdk::signature::Signer;
 
-use solana_program::{
-    account_info::{next_account_info, AccountInfo},
-    entrypoint,
-    entrypoint::ProgramResult,
-    program_error::ProgramError,
-    pubkey::Pubkey,
-    msg,
-};
-use borsh::{BorshDeserialize, BorshSerialize};
+// Reading SOL Wallet Balance, but Balance: 1000000000 SOL, 1 SOL = 1000000000 lamports
 
-// Program State structure
-#[derive(BorshSerialize, BorshDeserialize, Debug)]
-pub struct State {
-    pub key: String,
-    pub value: String,
-}
+fn main() {
+    // Connect to the Devnet RPC endpoint
+    let rpc_client = RpcClient::new("https://api.devnet.solana.com");
 
-// Entry point for Solana
-entrypoint!(process_instruction);
+    // Load the keypair from the file
+    let keypair_path = "/home/vscode/my-keypair2.json"; 
+    let keypair = solana_sdk::signer::keypair::read_keypair_file(keypair_path)
+        .expect("Failed to read keypair file");
 
-pub fn process_instruction(
-    program_id: &Pubkey,
-    accounts: &[AccountInfo],
-    instruction_data: &[u8],
-) -> ProgramResult {
-    // Log the entry point execution
-    msg!("process_instruction: program_id: {:?}", program_id);
-    msg!("process_instruction: accounts: {:?}", accounts);
-    msg!("process_instruction: instruction_data: {:?}", instruction_data);
+    // Get the balance of the account associated with the keypair
+    let balance = rpc_client.get_balance(&keypair.pubkey())
+        .expect("Failed to get balance");
 
-    // Your logic here
-
-    Ok(())
+    println!("Balance: {} lamport", balance);
+    println!("Balance: {} SOL", balance as f64 / 1000000000.0);
 }
